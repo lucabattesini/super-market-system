@@ -1,2 +1,3 @@
 venv/
-mysql_connection.py
+connection.py
+notes.txt
