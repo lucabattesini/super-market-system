@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
-from repository.product_info_repository import create_product
+from repository.product_info_repository import create_product, get_all_products
 from schemas.products_info_schema import ProductInfo
 
 router = APIRouter(
@@ -14,7 +14,11 @@ async def get_all_products_route():
     '''
     Route used to return all the products
     '''
-    return
+    products = get_all_products()
+    return JSONResponse(
+        content=products,
+        status_code=status.HTTP_200_OK
+    )
 
 @router.post("/")
 async def create_product_route(product: ProductInfo):

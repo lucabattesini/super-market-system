@@ -1,4 +1,32 @@
 from db.connection import cursor, connection
+from schemas.products_info_schema import ProductInfo
+
+def parse_products(params) -> ProductInfo:
+    '''
+    Organize the vars into an object format
+    '''
+    return ProductInfo(
+        id=params[0],
+        name=params[1],
+        price=params[2],
+        description=params[3],
+        category=params[4],
+        brand=params[5],
+        weight=params[6],
+        unit=params[7],
+        is_active=params[8]
+    )
+
+def get_all_products():
+    '''
+    Get all products from db and organize using parse_products()
+    '''
+    cursor.execute("SELECT * FROM product_info")
+    unorganized_list = cursor.fetchall()
+    organized_list = []
+    for r in unorganized_list:
+        organized_list.append(parse_products(r))
+    return unorganized_list
 
 def create_product(id, name, price, description, category, brand, weight, unit, is_active):
     '''
