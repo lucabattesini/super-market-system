@@ -8,3 +8,4 @@ def create_product(id, name, price, description, category, brand, weight, unit, 
                    (id, name, price, description, category, brand, weight, unit, is_active)
                    )
     connection.commit
+     # Usar SQLAlquemy (ORM)
