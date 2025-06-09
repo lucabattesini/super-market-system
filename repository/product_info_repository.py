@@ -7,5 +7,5 @@ def create_product(id, name, price, description, category, brand, weight, unit, 
     cursor.execute("INSERT INTO product_info (id, name, price, description, category, brand, weight, unit, is_active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                    (id, name, price, description, category, brand, weight, unit, is_active)
                    )
-    connection.commit
+    connection.commit()
      # Usar SQLAlquemy (ORM)
