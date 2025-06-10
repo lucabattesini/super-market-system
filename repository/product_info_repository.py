@@ -43,3 +43,4 @@ def delete_product(id):
     Delete a product
     '''
     cursor.execute(f"DELETE FROM product_info WHERE id = '{id}'")
+    connection.commit()
