@@ -2,6 +2,7 @@ import mysql.connector
 import os
 from dotenv import find_dotenv, load_dotenv
 
+# Virtual enviroment vars
 dotenv_path = find_dotenv()
 
 load_dotenv(dotenv_path)
@@ -17,7 +18,5 @@ connection = mysql.connector.connect(
     password=password,
     database=database
 )
-# Usar variaveis de ambiente
 
-# Create a cursor
 cursor = connection.cursor()

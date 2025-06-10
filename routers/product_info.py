@@ -34,3 +34,7 @@ async def edit_product_route(product: ProductInfo):
     Route used to edit a product
     '''
     return
+
+router.delete("/")
+async def delete_product_route():
+    return
