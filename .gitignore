@@ -1,4 +1,4 @@
 venv/
-connection.py
 notes.txt
 __pycache__/
+.env
