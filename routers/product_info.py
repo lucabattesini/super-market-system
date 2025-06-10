@@ -1,5 +1,6 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, Query
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from repository.product_info_repository import create_product, get_all_products, delete_product
 from schemas.products_info_schema import ProductInfo
 
@@ -10,12 +11,22 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_all_products_route():
+async def get_all_products_route(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
     '''
     Route used to return all the products
     '''
     products = get_all_products()
-    return products
+    paginated_products = products[skip: skip + limit]
+    json_result = jsonable_encoder(paginated_products)
+    return JSONResponse(
+        content={
+            "data": json_result,
+            "total": len(products),
+            "skip": skip,
+            "limit": limit
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @router.post("/")
 async def create_product_route(product: ProductInfo):
