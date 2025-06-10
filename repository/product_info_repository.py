@@ -26,7 +26,7 @@ def get_all_products():
     organized_list = []
     for r in unorganized_list:
         organized_list.append(parse_products(r))
-    return unorganized_list
+    return organized_list
 
 def create_product(id, name, price, description, category, brand, weight, unit, is_active):
     '''

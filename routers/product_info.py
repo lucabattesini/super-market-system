@@ -15,10 +15,7 @@ async def get_all_products_route():
     Route used to return all the products
     '''
     products = get_all_products()
-    return JSONResponse(
-        content=products,
-        status_code=status.HTTP_200_OK
-    )
+    return products
 
 @router.post("/")
 async def create_product_route(product: ProductInfo):
