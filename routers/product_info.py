@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
-from repository.product_info_repository import create_product, get_all_products
+from repository.product_info_repository import create_product, get_all_products, delete_product
 from schemas.products_info_schema import ProductInfo
 
 router = APIRouter(
@@ -28,13 +28,20 @@ async def create_product_route(product: ProductInfo):
         content={"message": "Product created successfully"}
     )
 
-router.put("/")
+@router.put("/")
 async def edit_product_route(product: ProductInfo):
     '''
     Route used to edit a product
     '''
     return
 
-router.delete("/")
-async def delete_product_route():
-    return
+@router.delete("/{id}")
+async def delete_product_route(id):
+    '''
+    Route used to delete a product
+    '''
+    delete_product(id)
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"message": "Product deleted successfully"}
+    )

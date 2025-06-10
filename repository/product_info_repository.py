@@ -37,3 +37,9 @@ def create_product(id, name, price, description, category, brand, weight, unit, 
                    )
     connection.commit()
      # Usar SQLAlquemy (ORM)
+
+def delete_product(id):
+    '''
+    Delete a product
+    '''
+    cursor.execute(f"DELETE FROM product_info WHERE id = '{id}'")
