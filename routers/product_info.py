@@ -27,3 +27,7 @@ async def create_product_route(product: ProductInfo):
         status_code=status.HTTP_200_OK,
         content={"message": "Product created successfully"}
     )
+
+router.put("/")
+async def edit_product_route(product: ProductInfo):
+    return
