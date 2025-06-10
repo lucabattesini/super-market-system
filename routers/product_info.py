@@ -30,4 +30,7 @@ async def create_product_route(product: ProductInfo):
 
 router.put("/")
 async def edit_product_route(product: ProductInfo):
+    '''
+    Route used to edit a product
+    '''
     return
