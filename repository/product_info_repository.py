@@ -49,5 +49,5 @@ def edit_product(id, name, price, description, category, brand, weight, unit, is
     '''
     Edit a product
     '''
-    delete_product(id)
-    create_product(id, name, price, description, category, brand, weight, unit, is_active)
+    cursor.execute(f"UPDATE product_info SET name = '{name}', price = '{price}', description = '{description}', category = '{category}', brand = '{brand}', weight = '{weight}', unit = '{unit}', is_active = '{is_active}' WHERE id = '{id}';")
+    connection.commit()
