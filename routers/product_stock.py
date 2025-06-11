@@ -7,3 +7,7 @@ router = APIRouter(
     tags=["inventory"],
     responses={404: {"description": "Not found"}}
 )
+
+@router.get("/")
+async def get_all_inventory_info_route():
+    return
