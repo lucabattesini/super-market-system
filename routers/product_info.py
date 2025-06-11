@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from repository.product_info_repository import create_product, get_all_products, delete_product
+from repository.product_info_repository import create_product, get_all_products, delete_product, edit_product
 from schemas.products_info_schema import ProductInfo
 
 router = APIRouter(
@@ -41,6 +41,10 @@ async def create_product_route(product: ProductInfo):
 
 @router.put("/")
 async def edit_product_route(product: ProductInfo):
+    '''
+    Route used to edit a product
+    '''
+    edit_product(product.id, product.name, product.price, product.description, product.category, product.brand, product.weight, product.unit, product.is_active)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={"message": "Product edited successfully"}
