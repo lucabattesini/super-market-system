@@ -44,3 +44,10 @@ def delete_product(id):
     '''
     cursor.execute(f"DELETE FROM product_info WHERE id = '{id}'")
     connection.commit()
+
+def edit_product(id, name, price, description, category, brand, weight, unit, is_active):
+    '''
+    Edit a product
+    '''
+    delete_product(id)
+    create_product(id, name, price, description, category, brand, weight, unit, is_active)

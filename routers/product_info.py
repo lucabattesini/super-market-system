@@ -39,6 +39,13 @@ async def create_product_route(product: ProductInfo):
         content={"message": "Product created successfully"}
     )
 
+@router.put("/")
+async def edit_product_route(product: ProductInfo):
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"message": "Product edited successfully"}
+    )
+
 @router.delete("/{id}")
 async def delete_product_route(id):
     '''
