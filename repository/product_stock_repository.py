@@ -19,7 +19,12 @@ def get_all_products_from_stock():
     '''
     Return all the products from stock
     '''
-    return
+    cursor.execute("SELECT * FROM product_stock")
+    unorganized_list = cursor.fetchall()
+    organized_list = []
+    for r in unorganized_list:
+        organized_list.append(parse_product_from_stock(r))
+    return organized_list
 
 def disable_product_from_stock():
     '''
@@ -35,6 +40,6 @@ def create_product_in_stock():
 
 def edit_product_stock_quantity():
     '''
-    Change teh stock quantity of a product
+    Change the stock quantity of a product
     '''
     return
