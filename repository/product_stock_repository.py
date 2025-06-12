@@ -3,7 +3,7 @@ from schemas.products_stock_schema import ProductStock
 
 def parse_product_from_stock(params) -> ProductStock:
     '''
-    Organize the vars into an object format
+    Return the schema in a json format
     '''
     return ProductStock(
         product_id=params[0],
@@ -14,13 +14,25 @@ def parse_product_from_stock(params) -> ProductStock:
         )
 
 def get_all_products_from_stock():
+    '''
+    Return all the products from stock
+    '''
     return
 
 def disable_product_from_stock():
+    '''
+    Will disabe a product in product_stock table by changing a var name
+    '''
     return
 
 def create_product_in_stock():
+    '''
+    Create a product in stock
+    '''
     return
 
 def edit_product_stock_quantity():
+    '''
+    Change teh stock quantity of a product
+    '''
     return
