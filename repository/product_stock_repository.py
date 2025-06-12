@@ -10,7 +10,9 @@ def parse_product_from_stock(params) -> ProductStock:
         bar_code=params[1],
         overall_stock=params[2],
         store_stock=params[3],
-        warehouse_stock=params[4]
+        warehouse_stock=params[4],
+        last_updated=params[5],
+        is_active=[6]
         )
 
 def get_all_products_from_stock():
