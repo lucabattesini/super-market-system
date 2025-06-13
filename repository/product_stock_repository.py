@@ -38,8 +38,14 @@ def create_product_in_stock():
     '''
     return
 
-def edit_product_stock_quantity():
+def edit_product_stock_quantity(id, column, data, operation):
     '''
     Change the stock quantity of a product
     '''
+    if operation == "add":
+        cursor.execute(f"UPDATE product_stock SET {column} = {column} + {data} WHERE id = '{id}';")
+    elif operation == "sub":
+        cursor.execute(f"UPDATE product_stock SET {column} = {column} - {data} WHERE id = '{id}';")
+    else:
+        return KeyError
     return
