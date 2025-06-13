@@ -46,6 +46,4 @@ def edit_product_stock_quantity(id, column, data, operation):
         cursor.execute(f"UPDATE product_stock SET {column} = {column} + {data} WHERE id = '{id}';")
     elif operation == "sub":
         cursor.execute(f"UPDATE product_stock SET {column} = {column} - {data} WHERE id = '{id}';")
-    else:
-        return KeyError
-    return
+    return {"message": "Values added successfully"}

@@ -2,6 +2,8 @@ from fastapi import APIRouter, status, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from repository.product_stock_repository import get_all_products_from_stock
+from schemas.products_stock_schema import ProductStock
+from typing import Literal
 
 router = APIRouter(
     prefix="/inventory",
@@ -11,4 +13,8 @@ router = APIRouter(
 
 @router.get("/")
 async def get_all_inventory_info_route():
+    return
+
+@router.put("/{operation}")
+async def edit_product_stock_quantity_route(operation: Literal["add", "sub"], product: ProductStock):
     return
