@@ -44,6 +44,8 @@ def edit_product_stock_quantity(id, column, data, operation):
     '''
     if operation == "add":
         cursor.execute(f"UPDATE product_stock SET {column} = {column} + {data} WHERE id = '{id}';")
+
     elif operation == "sub":
         cursor.execute(f"UPDATE product_stock SET {column} = {column} - {data} WHERE id = '{id}';")
+        
     return {"message": "Values added successfully"}
