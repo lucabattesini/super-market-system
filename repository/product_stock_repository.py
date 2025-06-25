@@ -26,18 +26,12 @@ def get_all_products_from_stock():
         organized_list.append(parse_product_from_stock(r))
     return organized_list
 
-def disable_product_from_stock():
-    '''
-    Will disabe a product in product_stock table by changing a var name
-    '''
-    return
-
-def create_product_in_stock(product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active):
+def create_product_in_stock(product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated):
     '''
     Create a product in stock
     '''
-    cursor.execute("INSERT INTO product_stock (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active) VALUES (%s, %s, %s, %s, %s, %s, %s);",
-                   (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active)
+    cursor.execute("INSERT INTO product_stock (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated) VALUES (%s, %s, %s, %s, %s, %s);",
+                   (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated)
                    )
     connection.commi()
     return

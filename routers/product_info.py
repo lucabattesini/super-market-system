@@ -4,6 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from repository.product_info_repository import create_product, get_all_products, delete_product, edit_product
 from schemas.products_info_schema import ProductInfo
 
+
 router = APIRouter(
     prefix="/products",
     tags=["products"],
