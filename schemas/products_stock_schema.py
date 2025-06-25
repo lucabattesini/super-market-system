@@ -7,4 +7,3 @@ class ProductStock(BaseModel):
     store_stock: int
     warehouse_stock: int
     last_updated: str
-    is_active: bool
