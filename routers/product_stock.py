@@ -13,7 +13,8 @@ router = APIRouter(
 
 @router.get("/")
 async def get_all_inventory_info_route():
-    return
+    products = get_all_products_from_stock()
+    return products
 
 @router.put("/{operation}")
 async def edit_product_stock_quantity_route(operation: Literal["add", "sub"], product: ProductStock):
