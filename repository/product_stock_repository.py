@@ -1,5 +1,6 @@
 from db.connection import cursor, connection
 from schemas.products_stock_schema import ProductStock
+from datetime import date
 
 def parse_product_from_stock(params) -> ProductStock:
     '''
@@ -30,8 +31,9 @@ def create_product_in_stock(product_id, bar_code):
     '''
     Create a product in stock
     '''
-    cursor.execute("INSERT INTO product_stock (id, bar_code) VALUES (%s, %s);",
-                   (product_id, bar_code)
+    today = date.today()
+    cursor.execute("INSERT INTO product_stock (id, bar_code, last_update) VALUES (%s, %s, %s);",
+                   (product_id, bar_code, today)
                    )
     connection.commit()
     return {"message": "Product created successfully in stock"}

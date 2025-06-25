@@ -1,6 +1,7 @@
 from db.connection import cursor, connection
 from repository.product_info_repository import create_product
 from repository.product_stock_repository import create_product_in_stock
+from uuid import uuid1
 
 def check_if_id_already_exist(id, table):
     '''
@@ -18,10 +19,11 @@ def check_if_id_already_exist(id, table):
         return True
     
 
-def create_product_in_both_tables(id, bar_code, name, price, description, category, brand, weight, unit, is_active):
+def create_product_in_both_tables(bar_code, name, price, description, category, brand, weight, unit, is_active):
     '''
     Will create a product in both tables wich depends from each other
     '''
+    id = str(uuid1())
     check_info_table = check_if_id_already_exist(id, "product_info")
     check_stock_table = check_if_id_already_exist(id, "product_stock")
     if check_info_table == False:
