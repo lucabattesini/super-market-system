@@ -6,7 +6,7 @@ def parse_product_from_stock(params) -> ProductStock:
     Return the schema in a json format
     '''
     return ProductStock(
-        product_id=params[0],
+        id=params[0],
         bar_code=params[1],
         overall_stock=params[2],
         store_stock=params[3],
@@ -26,14 +26,14 @@ def get_all_products_from_stock():
         organized_list.append(parse_product_from_stock(r))
     return organized_list
 
-def create_product_in_stock(product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated):
+def create_product_in_stock(product_id, bar_code):
     '''
     Create a product in stock
     '''
-    cursor.execute("INSERT INTO product_stock (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated) VALUES (%s, %s, %s, %s, %s, %s);",
-                   (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated)
+    cursor.execute("INSERT INTO product_stock (id, bar_code) VALUES (%s, %s);",
+                   (product_id, bar_code)
                    )
-    connection.commi()
+    connection.commit()
     return {"message": "Product created successfully in stock"}
 
 def edit_product_stock_quantity(id, column, data, operation):
