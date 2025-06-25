@@ -34,7 +34,7 @@ def create_product_in_stock(product_id, bar_code, overall_stock, store_stock, wa
                    (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated)
                    )
     connection.commi()
-    return
+    return {"message": "Product created successfully in stock"}
 
 def edit_product_stock_quantity(id, column, data, operation):
     '''
