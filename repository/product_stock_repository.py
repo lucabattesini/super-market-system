@@ -32,10 +32,14 @@ def disable_product_from_stock():
     '''
     return
 
-def create_product_in_stock():
+def create_product_in_stock(product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active):
     '''
     Create a product in stock
     '''
+    cursor.execute("INSERT INTO product_stock (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active) VALUES (%s, %s, %s, %s, %s, %s, %s);",
+                   (product_id, bar_code, overall_stock, store_stock, warehouse_stock, last_updated, is_active)
+                   )
+    connection.commi()
     return
 
 def edit_product_stock_quantity(id, column, data, operation):
@@ -47,5 +51,6 @@ def edit_product_stock_quantity(id, column, data, operation):
 
     elif operation == "sub":
         cursor.execute(f"UPDATE product_stock SET {column} = {column} - {data} WHERE id = '{id}';")
+    connection.commit()
         
     return {"message": "Values added successfully"}
