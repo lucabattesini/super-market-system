@@ -31,9 +31,9 @@ def create_product_in_stock(product_id, bar_code):
     '''
     Create a product in stock
     '''
-    today = date.today()
-    cursor.execute("INSERT INTO product_stock (id, bar_code, last_update) VALUES (%s, %s, %s);",
-                   (product_id, bar_code, today)
+    today = str(date.today())
+    cursor.execute("INSERT INTO product_stock (id, bar_code, last_updated, overall_stock, store_stock, warehouse_stock) VALUES (%s, %s, %s, %s, %s, %s);",
+                   (product_id, bar_code, today, 0, 0, 0)
                    )
     connection.commit()
     return {"message": "Product created successfully in stock"}

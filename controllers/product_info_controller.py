@@ -12,7 +12,7 @@ async def get_all_products():
     json_result = jsonable_encoder(products)
     return json_result
 
-def _create_product_in_both_tables(bar_code, name, price, description, category, brand, weight, unit, is_active):
+def create_product_in_both_tables(bar_code, name, price, description, category, brand, weight, unit, is_active):
     '''
     Will create a product in both tables which depends from each other
     '''

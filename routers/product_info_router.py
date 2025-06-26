@@ -2,7 +2,8 @@ from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 import repository.product_info_repo as product_info_repo
 from schemas.products_info_schema import ProductInfo
-from controllers.product_info_controller import get_all_products
+from schemas.products_stock_schema import ProductStock
+from controllers.product_info_controller import get_all_products, create_product_in_both_tables
 
 
 router = APIRouter(
@@ -26,11 +27,11 @@ async def get_all_products_route():
     )
 
 @router.post("/")
-async def create_product_route(product: ProductInfo):
+async def create_product_route(product: ProductInfo, stock: ProductStock):
     '''
     Route used to create a new product
     '''
-    product_info_repo.create_product(product)
+    create_product_in_both_tables(stock.bar_code, product.name, product.price, product.description, product.category, product.brand, product.weight, product.unit, product.is_active)
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={"message": "Product created successfully"}
