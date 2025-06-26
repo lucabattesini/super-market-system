@@ -13,9 +13,23 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_all_products_route():
-    await get_all_products()
-    
+async def get_all_products_route(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
+    '''
+    Route used to return all the products
+    '''
+    products = get_all_products()
+    paginated_products = products[skip: skip + limit]
+    json_result = jsonable_encoder(paginated_products)
+    return JSONResponse(
+        content={
+            "data": json_result,
+            "total": len(products),
+            "skip": skip,
+            "limit": limit
+        },
+        status_code=status.HTTP_200_OK
+    )
+
 
 @router.post("/")
 async def create_product_route(product: ProductInfo):
