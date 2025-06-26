@@ -13,12 +13,11 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def get_all_products_route(skip: int = Query(0, ge=0), limit: int = Query(10, ge=1)):
+async def get_all_products_route():
     '''
     Route used to return all the products
     '''
-    products = await get_all_products(skip, limit)
-    return products
+    return await get_all_products()
 
 @router.post("/")
 async def create_product_route(product: ProductInfo):
