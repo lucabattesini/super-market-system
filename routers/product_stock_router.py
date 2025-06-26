@@ -1,7 +1,7 @@
 from fastapi import APIRouter, status, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from repository.product_stock_repository import get_all_products_from_stock
+from repository.product_stock_repo import get_all_products_from_stock
 from schemas.products_stock_schema import ProductStock
 from typing import Literal
 
