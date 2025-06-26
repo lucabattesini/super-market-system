@@ -1,6 +1,5 @@
-from fastapi import APIRouter, status, Query
+from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
 import repository.product_info_repo as product_info_repo
 from schemas.products_info_schema import ProductInfo
 from controllers.product_info_controller import get_all_products

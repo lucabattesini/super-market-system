@@ -1,14 +1,12 @@
 import repository.product_info_repo as product_info_repo
-from fastapi import status, Query
 from fastapi.encoders import jsonable_encoder
 from repository.product_info_repo import create_product
 from repository.product_stock_repo import create_product_in_stock
 from uuid import uuid1
-from fastapi.responses import JSONResponse
 
 async def get_all_products():
     '''
-    Route used to return all the products
+    Function used to return all the products
     '''
     products = product_info_repo.get_all_products()
     json_result = jsonable_encoder(products)
