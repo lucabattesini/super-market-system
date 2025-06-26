@@ -6,6 +6,23 @@ from repository.product_stock_repo import create_product_in_stock
 from uuid import uuid1
 from fastapi.responses import JSONResponse
 
+async def get_all_products(skip, limit):
+    '''
+    Route used to return all the products
+    '''
+    products = get_all_products()
+    paginated_products = products[skip: skip + limit]
+    json_result = jsonable_encoder(paginated_products)
+    return JSONResponse(
+        content={
+            "data": json_result,
+            "total": len(products),
+            "skip": skip,
+            "limit": limit
+        },
+        status_code=status.HTTP_200_OK
+    )
+
 def _create_product_in_both_tables(bar_code, name, price, description, category, brand, weight, unit, is_active):
     '''
     Will create a product in both tables which depends from each other
