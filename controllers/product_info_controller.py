@@ -12,13 +12,7 @@ async def get_all_products():
     '''
     products = product_info_repo.get_all_products()
     json_result = jsonable_encoder(products)
-    return JSONResponse(
-        content={
-            "data": json_result,
-            "total": len(products),
-        },
-        status_code=status.HTTP_200_OK
-    )
+    return json_result
 
 def _create_product_in_both_tables(bar_code, name, price, description, category, brand, weight, unit, is_active):
     '''
