@@ -26,6 +26,10 @@ async def get_all_products_route():
         status_code=status.HTTP_200_OK
     )
 
+@router.get("/{product_id}")
+async def get_product_by_id_route(product_id):
+    return product_info_repo.get_product_by_id(product_id)
+
 @router.post("/")
 async def create_product_route(product: ProductInfo, stock: ProductStock):
     '''

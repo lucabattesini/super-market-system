@@ -32,7 +32,7 @@ def get_product_by_id(id):
     '''
     Get an specific product by it's id
     '''
-    cursor.execute("SELECT * FROM product_info WHERE id = %s", (id))
+    cursor.execute("SELECT * FROM product_info WHERE id = %s", (id,))
     row = cursor.fetchone()
     if row:
         return parse_products(row)
