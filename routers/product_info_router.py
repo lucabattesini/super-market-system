@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 import repository.product_info_repo as product_info_repo
 from schemas.products_info_schema import ProductInfo
 from schemas.products_stock_schema import ProductStock
-from controllers.product_info_controller import get_all_products, create_product_in_both_tables
+from controllers.product_info_controller import get_all_products, get_product_by_id, create_product_in_both_tables
 
 
 router = APIRouter(
@@ -28,7 +28,13 @@ async def get_all_products_route():
 
 @router.get("/{product_id}")
 async def get_product_by_id_route(product_id):
-    return product_info_repo.get_product_by_id(product_id)
+    product = await get_product_by_id(product_id)
+    return JSONResponse(
+        content={
+            "data": product
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @router.post("/")
 async def create_product_route(product: ProductInfo, stock: ProductStock):
