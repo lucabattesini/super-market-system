@@ -28,6 +28,16 @@ def get_all_products():
         organized_list.append(parse_products(r))
     return organized_list
 
+def get_product_by_id(id):
+    '''
+    Get an specific product by it's id
+    '''
+    cursor.execute("SELECT * FROM product_info WHERE id = %s", (id))
+    row = cursor.fetchone()
+    if row:
+        return parse_products(row)
+    return None
+
 def create_product(id, name, price, description, category, brand, weight, unit, is_active):
     '''
     Create a product

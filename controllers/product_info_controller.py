@@ -20,6 +20,3 @@ def create_product_in_both_tables(bar_code, name, price, description, category, 
     create_product(id, name, price, description, category, brand, weight, unit, is_active)
     create_product_in_stock(id, bar_code)
     return {"message": "Product successfully created"}
-
-
-# Use route functions here and export to the routes
