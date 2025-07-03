@@ -38,15 +38,20 @@ def create_product_in_stock(product_id, bar_code):
     connection.commit()
     return {"message": "Product created successfully in stock"}
 
-def edit_product_stock_quantity(id, column, data, operation):
+def edit_product_quantity_in_stock(id, data, operation):
     '''
     Change the stock quantity of a product
     '''
     if operation == "add":
-        cursor.execute(f"UPDATE product_stock SET {column} = {column} + {data} WHERE id = '{id}';")
-
+        cursor.execute("UPDATE product_stock SET overall_stock = overall_stock + %s WHERE id = %s;", (data, id))
+        connection.commit()
+        return {"message": "successfull operation"}
+    
     elif operation == "sub":
-        cursor.execute(f"UPDATE product_stock SET {column} = {column} - {data} WHERE id = '{id}';")
-    connection.commit()
-        
-    return {"message": "Values added successfully"}
+        cursor.execute("UPDATE product_stock SET overall_stock = overall_stock - %s WHERE id = %s;", (data, id))
+        connection.commit()
+        return {"message": "successfull operation"}
+    
+    else:
+        return {"message": "operation wasn't recognized"}
+    
