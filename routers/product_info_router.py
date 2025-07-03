@@ -26,9 +26,9 @@ async def get_all_products_route():
         status_code=status.HTTP_200_OK
     )
 
-@router.get("/{product_id}")
-async def get_product_by_id_route(product_id):
-    product = await get_product_by_id(product_id)
+@router.get("/{id}")
+async def get_product_by_id_route(id):
+    product = await get_product_by_id(id)
     return JSONResponse(
         content={
             "data": product
