@@ -12,7 +12,7 @@ def parse_product_from_stock(params) -> ProductStock:
         overall_stock=params[2],
         store_stock=params[3],
         warehouse_stock=params[4],
-        last_updated=params[5],
+        last_updated=params[5].isoformat(),
         is_active=[6]
         )
 
