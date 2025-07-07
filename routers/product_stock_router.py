@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 from repository.product_stock_repo import get_all_products_from_stock, edit_product_quantity_in_stock
 from schemas.products_stock_schema import ProductStockOperation, ProductStockBuyOperation
-from typing import Literal
+from controllers.product_stock_controller import edit_different_products_quantity_in_stock
 
 router = APIRouter(
     prefix="/inventory",
@@ -27,4 +27,10 @@ async def edit_product_quantity_in_stock_route(product: ProductStockOperation):
 
 @router.put("/buy-operation")
 async def edit_different_products_quantity_in_stock_route(product: ProductStockBuyOperation):
-    return
+    edit_different_products_quantity_in_stock(product)
+    return JSONResponse(
+        content={
+            "message": "successfull operation"
+        },
+        status_code=status.HTTP_200_OK
+    )
