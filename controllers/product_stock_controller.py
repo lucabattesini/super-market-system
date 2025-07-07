@@ -3,8 +3,8 @@ from repository.product_stock_repo import edit_product_quantity_in_stock, get_pr
 
 def edit_different_products_quantity_in_stock(products):
     for r in products:
-        bar_code = r["bar_code"]
-        quantity = r["quantity"]
-        id = get_product_id_by_bar_code(bar_code)
+        bar_code = r.bar_code
+        quantity = r.quantity
+        id = str(get_product_id_by_bar_code(bar_code))
         edit_product_quantity_in_stock(id, quantity, "sub")
     return {"message": "products edited successfully"}
