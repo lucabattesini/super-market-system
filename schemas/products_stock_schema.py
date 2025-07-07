@@ -13,3 +13,8 @@ class ProductStockOperation(BaseModel):
     id: str
     data: int
     operation: Literal["add", "sub"]
+
+class ProductStockBuyOperation(BaseModel):
+    id: str
+    bar_code: str
+    quantity: int
