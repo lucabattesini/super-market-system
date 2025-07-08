@@ -55,6 +55,9 @@ def edit_product_quantity_in_stock(id, data, operation):
         return {"message": "operation wasn't recognized"}
 
 def get_product_id_by_bar_code(bar_code):
+    '''
+    Return product ID based on it's bar code
+    '''
     cursor.execute("SELECT id FROM product_stock WHERE bar_code = %s;", (bar_code,))
     row = cursor.fetchone()
     if row:

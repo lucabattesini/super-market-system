@@ -35,4 +35,4 @@ def delete_product_in_both_tables(id):
     delete_product(id)
     delete_product_in_stock(id)
     connection.commit()
-    return {"message": "product successfully deleted"}
+    return {"message": "Product successfully deleted"}
