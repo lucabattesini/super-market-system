@@ -35,7 +35,6 @@ def create_product_in_stock(product_id, bar_code):
     cursor.execute("INSERT INTO product_stock (id, bar_code, last_updated, overall_stock, store_stock, warehouse_stock) VALUES (%s, %s, %s, %s, %s, %s);",
                    (product_id, bar_code, today, 0, 0, 0)
                    )
-    connection.commit()
     return {"message": "Product created successfully in stock"}
 
 def edit_product_quantity_in_stock(id, data, operation):
@@ -62,3 +61,8 @@ def get_product_id_by_bar_code(bar_code):
         return row[0]
     return None
     
+def delete_product_in_stock(id):
+    '''
+    Delete a product
+    '''
+    cursor.execute(f"DELETE FROM product_stock WHERE id = '{id}'")

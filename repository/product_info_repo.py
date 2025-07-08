@@ -45,7 +45,6 @@ def create_product(id, name, price, description, category, brand, weight, unit, 
     cursor.execute("INSERT INTO product_info (id, name, price, description, category, brand, weight, unit, is_active) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
                    (id, name, price, description, category, brand, weight, unit, is_active)
                    )
-    connection.commit()
      # Usar SQLAlquemy (ORM)
 
 def delete_product(id):
@@ -53,7 +52,6 @@ def delete_product(id):
     Delete a product
     '''
     cursor.execute(f"DELETE FROM product_info WHERE id = '{id}'")
-    connection.commit()
 
 def edit_product(id, name, price, description, category, brand, weight, unit, is_active):
     '''
