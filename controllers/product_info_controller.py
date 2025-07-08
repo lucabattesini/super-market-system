@@ -1,8 +1,9 @@
 import repository.product_info_repo as product_info_repo
 from fastapi.encoders import jsonable_encoder
-from repository.product_info_repo import create_product
-from repository.product_stock_repo import create_product_in_stock
+from repository.product_info_repo import create_product, delete_product
+from repository.product_stock_repo import create_product_in_stock, delete_product_in_stock
 from uuid import uuid1
+from db.connection import connection
 
 async def get_all_products():
     '''
@@ -25,6 +26,13 @@ def create_product_in_both_tables(bar_code, name, price, description, category, 
     Will create a product in both tables which depends from each other
     '''
     id = str(uuid1())
-    create_product(id, name, price, description, category, brand, weight, unit, is_active)
     create_product_in_stock(id, bar_code)
+    create_product(id, name, price, description, category, brand, weight, unit, is_active)
+    connection.commit()
     return {"message": "Product successfully created"}
+
+def delete_product_in_both_tables(id):
+    delete_product(id)
+    delete_product_in_stock(id)
+    connection.commit()
+    return {"message": "product successfully deleted"}
