@@ -35,6 +35,9 @@ The system supports the full workflow - from initializing the database to handli
 🔐 Data Validation
 - Ensure data integrity for product and inventory records
 
+🌐 RESTful API endpoints
+- Access and manipulate products and inventory via HTTP requests
+
 ## Installing
 To run this project, you'll need firstly to copy it. Open the terminal in the folder you want to install the project and then run this line of code in the terminal
 
