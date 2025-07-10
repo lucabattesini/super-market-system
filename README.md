@@ -1,4 +1,4 @@
-# Super Market System
+# Super Market System API
 
 ## Description
 This project is a back-end system for managing a supermarket's product catalog and inventory. It is built around two core database tables that work together to support all operations:
